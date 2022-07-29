@@ -11,15 +11,19 @@
   </head>
   <body>
     <header>Server Side Calculator</header>
-    <div>
-      <input type="number" class="numberOneIn" />
-      <button id="addBtn">+</button>
-      <button id="subtractBtn">-</button>
-      <button id="multiplyBtn">*</button>
-      <button id="divideBtn">/</button>
-      <input type="number" class="numberTwoIn" />
+    <div id="interfaceContainer">
+      <input type="number" id="numberOneIn" />
+      <div id="operatorContainer"></div>
+      <button id="addBtn" class="operatorBtn">+</button>
+      <button id="subtractBtn" class="operatorBtn">-</button>
+      <button id="multiplyBtn" class="operatorBtn">*</button>
+      <button id="divideBtn" class="operatorBtn">/</button>
+      <div id="operatorContainer" class="operatorBtn"></div>
+      <input type="number" id="numberTwoIn" />
       <button id="equalsBtn">=</button>
       <button id="clearBtn">C</button>
     </div>
+    <div id="result"></div>
+    <div id="historyContainer"></div>
   </body>
 </html>
