@@ -1,50 +1,54 @@
+//const express = require("express");
+
 console.log("js");
 
 $(document).ready(onReady);
 
 function onReady() {
   console.log("test");
-  //   $("#operatorContainer").on("click", ".operatorBtn", operatorSelector);
+  $("#operatorContainer").on("click", "#addBtn", operatorSelector);
   //$("#addBtn").on("click", operatorSelector);
-  $("#equalsBtn").on("click", addNums);
+  $("#equalsBtn").on("click", addNumbers);
   //$("addBtn").on("click", addNums);
+  getCalcResponse();
 }
 
-// let operator = "";
+let operator = [];
 
-// function operatorSelector() {
-//   operator = "+";
-//   console.log(operator);
-//   return operator;
-// }
-//console.log(operator);
+function operatorSelector() {
+  let plusSign = $(this).closest("button").text();
+  console.log(plusSign);
+  operator.push(plusSign);
+}
+console.log(operator);
 
 //   let operator = $(this).closest("button").text();
 
-function addNums() {
+function addNumbers() {
   let equationElements = {
     firstNumber: $("#numberOneIn").val(),
     secondNumber: $("#numberTwoIn").val(),
-    operator: "",
+    operator: operator,
   };
-  console.log(equation);
+  console.log(equationElements);
+}
+$.ajax({
+  method: "POST",
+  url: "/values",
+  data: equationElements,
+}).then(function (response) {
+  console.log(response);
+  getCalcResponse();
+});
+
+function getCalcResponse() {
   $.ajax({
-    method: "POST",
+    method: "GET",
     url: "/values",
-    data: equationElements,
   }).then(function (response) {
     console.log(response);
-    getCalcResponse();
   });
 }
-
-function getCalcResponse() {}
-$.ajax({
-  method: "GET",
-  url: "/values",
-}).then(function (response) {
-  renderToDom(response);
-});
 
 function renderToDom(response) {}
 $("#output").empty();
