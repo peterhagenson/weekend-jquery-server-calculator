@@ -13,8 +13,14 @@ function onReady() {
   $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
   //$("#addBtn").on("click", operatorSelector);
   $("#equalsBtn").on("click", addNumbers);
+  $("#clearBtn").on("click", clearFields);
   //$("addBtn").on("click", addNums);
   // getCalcResponse();
+}
+
+function clearFields() {
+  $("#numberOneIn").val("");
+  $("#numberTwoIn").val("");
 }
 // initialize operator array that will contain the user selected operator
 let operator = [];
@@ -59,9 +65,18 @@ function getCalcResponse() {
     url: "/values",
   }).then(function (response) {
     console.log(response);
+    renderToDom(response);
   });
 }
 
 function renderToDom(response) {
-  $("#output").empty();
+  console.log(response);
+  $("#result").empty();
+  $("#historyContainer").empty();
+  $("#result").append(response[0].result);
+
+  for (let equationObject of response) {
+    $("#historyContainer").append(`
+    <li>${equationObject.equation}`);
+  }
 }
