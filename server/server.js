@@ -5,7 +5,7 @@ const PORT = 5000;
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static("server/pubic"));
+app.use(express.static("server/public"));
 
 let equationHistory = [];
 

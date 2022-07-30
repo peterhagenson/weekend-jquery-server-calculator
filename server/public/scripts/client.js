@@ -35,17 +35,19 @@ function addNumbers() {
     operator: operator,
   };
 
-  //   console.log(equationElements);
-
-  $.ajax({
-    method: "POST",
-    url: "/values",
-    data: equationElements,
-  }).then(function (response) {
-    console.log(response);
-    getCalcResponse();
-  });
+  let equationCalculation = equationElements.firstNumber;
 }
+
+//   console.log(equationElements);
+
+$.ajax({
+  method: "POST",
+  url: "/values",
+  data: equationElements,
+}).then(function (response) {
+  console.log(response);
+  getCalcResponse();
+});
 
 function getCalcResponse() {
   $.ajax({
@@ -56,5 +58,6 @@ function getCalcResponse() {
   });
 }
 
-function renderToDom(response) {}
-$("#output").empty();
+function renderToDom(response) {
+  $("#output").empty();
+}
