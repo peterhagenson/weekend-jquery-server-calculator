@@ -15,18 +15,47 @@ let postCalcHistory = [];
 function numberCruncher() {
   console.log("In numberCruncher");
   for (let values of equationHistory) {
-    let result = Number(values.firstNumber) + Number(values.secondNumber);
-    let equation = `${values.firstNumber} + ${values.secondNumber} = ${result}`;
-    console.log(equation);
-    let calculatedObject = {
-      result: result,
-      equation: equation,
-    };
-    equationHistory = [];
-
-    postCalcHistory.unshift(calculatedObject);
-
-    //return values.firstNumber + values.secondNumber;
+    if (values.operator == "+") {
+      let result = Number(values.firstNumber) + Number(values.secondNumber);
+      let equation = `${values.firstNumber} + ${values.secondNumber} = ${result}`;
+      console.log(equation);
+      let calculatedObject = {
+        result: result,
+        equation: equation,
+      };
+      equationHistory = [];
+      postCalcHistory.unshift(calculatedObject);
+    } else if (values.operator == "-") {
+      let result = Number(values.firstNumber) - Number(values.secondNumber);
+      let equation = `${values.firstNumber} - ${values.secondNumber} = ${result}`;
+      console.log(equation);
+      let calculatedObject = {
+        result: result,
+        equation: equation,
+      };
+      equationHistory = [];
+      postCalcHistory.unshift(calculatedObject);
+    } else if (values.operator == "*") {
+      let result = Number(values.firstNumber) * Number(values.secondNumber);
+      let equation = `${values.firstNumber} * ${values.secondNumber} = ${result}`;
+      console.log(equation);
+      let calculatedObject = {
+        result: result,
+        equation: equation,
+      };
+      equationHistory = [];
+      postCalcHistory.unshift(calculatedObject);
+    } else if (values.operator == "/") {
+      let result = Number(values.firstNumber) / Number(values.secondNumber);
+      let equation = `${values.firstNumber} / ${values.secondNumber} = ${result}`;
+      console.log(equation);
+      let calculatedObject = {
+        result: result,
+        equation: equation,
+      };
+      equationHistory = [];
+      postCalcHistory.unshift(calculatedObject);
+    }
   }
 }
 
