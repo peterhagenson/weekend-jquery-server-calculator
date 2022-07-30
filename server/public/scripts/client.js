@@ -7,22 +7,26 @@ $(document).ready(onReady);
 function onReady() {
   console.log("test");
   $("#operatorContainer").on("click", "#addBtn", operatorSelector);
+  $("#operatorContainer").on("click", "#subtractBtn", operatorSelector);
+  $("#operatorContainer").on("click", "#multiplyBtn", operatorSelector);
+  $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
   //$("#addBtn").on("click", operatorSelector);
   $("#equalsBtn").on("click", addNumbers);
   //$("addBtn").on("click", addNums);
-  getCalcResponse();
+  // getCalcResponse();
 }
 
 let operator = [];
 
 function operatorSelector() {
-  let plusSign = $(this).closest("button").text();
-  console.log(plusSign);
-  operator.push(plusSign);
+  let operatorBtn = $(this).closest("button").text();
+  console.log(operatorBtn);
+  operator.push(operatorBtn);
+  console.log(operator);
 }
 console.log(operator);
 
-//   let operator = $(this).closest("button").text();
+//let operator = $(this).closest("button").text();
 
 function addNumbers() {
   let equationElements = {
@@ -30,16 +34,18 @@ function addNumbers() {
     secondNumber: $("#numberTwoIn").val(),
     operator: operator,
   };
-  console.log(equationElements);
+
+  //   console.log(equationElements);
+
+  $.ajax({
+    method: "POST",
+    url: "/values",
+    data: equationElements,
+  }).then(function (response) {
+    console.log(response);
+    getCalcResponse();
+  });
 }
-$.ajax({
-  method: "POST",
-  url: "/values",
-  data: equationElements,
-}).then(function (response) {
-  console.log(response);
-  getCalcResponse();
-});
 
 function getCalcResponse() {
   $.ajax({

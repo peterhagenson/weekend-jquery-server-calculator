@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/peterhagenson/weekend-jquery-server-calculator/issues"
   },
-  "homepage": "https://github.com/peterhagenson/weekend-jquery-server-calculator#readme"
+  "homepage": "https://github.com/peterhagenson/weekend-jquery-server-calculator#readme",
+  "devDependencies": {}
 }
