@@ -5,17 +5,18 @@ $(document).ready(onReady);
 function onReady() {
   console.log("test");
   //   $("#operatorContainer").on("click", ".operatorBtn", operatorSelector);
-  $("#addBtn").on("click", operatorSelector);
+  //$("#addBtn").on("click", operatorSelector);
   $("#equalsBtn").on("click", addNums);
   //$("addBtn").on("click", addNums);
 }
 
 // let operator = "";
 
-function operatorSelector() {
-  //operator = "+";
-  console.log(operator);
-}
+// function operatorSelector() {
+//   operator = "+";
+//   console.log(operator);
+//   return operator;
+// }
 //console.log(operator);
 
 //   let operator = $(this).closest("button").text();
@@ -24,7 +25,7 @@ function addNums() {
   let equationElements = {
     firstNumber: $("#numberOneIn").val(),
     secondNumber: $("#numberTwoIn").val(),
-    //operator: "",
+    operator: "",
   };
   console.log(equation);
   $.ajax({
@@ -36,3 +37,14 @@ function addNums() {
     getCalcResponse();
   });
 }
+
+function getCalcResponse() {}
+$.ajax({
+  method: "GET",
+  url: "/values",
+}).then(function (response) {
+  renderToDom(response);
+});
+
+function renderToDom(response) {}
+$("#output").empty();
