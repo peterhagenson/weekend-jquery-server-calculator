@@ -23,16 +23,13 @@ function clearFields() {
   $("#numberTwoIn").val("");
 }
 // initialize operator array that will contain the user selected operator
-let operator = [];
+let operator;
 
 //push the user selected operator into the operator array
 function operatorSelector() {
   let operatorBtn = $(this).closest("button").text();
-  console.log(operatorBtn);
-  operator.push(operatorBtn);
-  console.log(operator);
+  operator = operatorBtn;
 }
-console.log(operator);
 
 //let operator = $(this).closest("button").text();
 // when user clicks =, addNumbers runs to assign the input values and the user-selected operator, to the object equationElements
