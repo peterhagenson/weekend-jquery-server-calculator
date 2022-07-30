@@ -8,7 +8,7 @@ Your project description goes here. What problem did you solve? How did you solv
 
 Weekend jQuery Server Calculator
 Description
-Duration: 5 hours (including 2.5 hours stuck on a 404 error)
+Duration: 5.5 hours (including 2 hours stuck on a 404 error)
 
 Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it?
 
@@ -17,12 +17,9 @@ The assignments asked for me to create a calculator in which a user would enter 
 -input fields attached to = button
 
 - click listener attached to container # of the operator container
-  - find closest button, pull the text from the symbol on the button, assign it to a variable
+  - find closest button, pull the text from the symbol on the button, assign it to a variable that gets packaged in an object along with the values entered into the two input fields, and send it to the server via ajax
 
 To see the fully functional site, please visit: DEPLOYED VERSION OF APP
-
-Screen Shot
-Include one or two screen shots of your project here (optional). Remove if unused.
 
 Prerequisites
 Link to software that is required to install the app (e.g. node).
