@@ -37,6 +37,7 @@ function addVals(values) {
     result: result,
     equation: equation,
   };
+  console.log(calculatedObject);
   equationHistory = [];
   postCalcHistory.unshift(calculatedObject);
 }

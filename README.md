@@ -8,7 +8,7 @@ Your project description goes here. What problem did you solve? How did you solv
 
 Weekend jQuery Server Calculator
 Description
-Duration: 5.5 hours (including 2 hours stuck on a 404 error)
+Duration: Base mode 5.5 hours (including 2 hours stuck on a 404 error)
 
 Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it?
 
