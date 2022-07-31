@@ -1,0 +1,5 @@
+#altInterfaceContainer {
+  margin-top: 20px;
+  max-width: 110px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
