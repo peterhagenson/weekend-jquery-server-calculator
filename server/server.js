@@ -79,14 +79,14 @@ function divideVals(values) {
   postCalcHistory.unshift(calculatedObject);
 }
 
-// this is the GET route that receives the GET request on the server and sends back the equationHistory array (THIS_NEEDS_TO_BE_CHANGED)
+// this is the GET route that receives the GET request on the server and sends back the postCalcHistory array
 app.get("/values", function (req, res) {
   console.log("GET / values");
 
   res.send(postCalcHistory);
 });
 
-// this is the POST route that receives a POST request wherein the client is requesting to post the equationElements object to the server. The object is pushed to the equationHistory array, the numberCruncher function is called, and the 200 status message is returned to the client
+// this is the POST route that receives a POST request wherein the client is requesting to post the objectToSend object to the server. The object is pushed to the equationHistory array, the equationSelector function is called, and the 200 status message is returned to the client
 app.post("/values", (req, res) => {
   console.log("POST / values");
   console.log(req.body);

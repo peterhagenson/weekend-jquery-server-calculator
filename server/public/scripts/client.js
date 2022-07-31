@@ -25,6 +25,13 @@ function onReady() {
   $("#altInterfaceContainer").on("click", "#zeroBtn", stringNums);
   $("#altInterfaceContainer").on("click", "#dotBtn", stringNums);
   $("#altInterfaceContainer").on("click", "#equalsBtn", stringToObject);
+  $("#displayContainer").on("click", "#clearBtn", clearDisplay);
+}
+
+function clearDisplay() {
+  $("#display").val("");
+  stringNumber = "";
+  sympol = "";
 }
 
 // this variable holds the equation the user inputs with the input pad in the form of a string e.g. "54*2".
@@ -61,6 +68,9 @@ function stringToObject() {
   }).then(function (response) {
     console.log(response);
   });
+  $("#display").empty();
+  stringNumber = "";
+  sympol = "";
   getCalcResponse();
 }
 
