@@ -12,54 +12,71 @@ let equationHistory = [];
 
 let postCalcHistory = [];
 
-function numberCruncher() {
-  console.log("In numberCruncher");
+// this function checks the operator value of the object being posted to the server via the post route, and calls the corresponding function to do the calculation
+function equationSelector() {
+  console.log("In equationSelector");
   for (let values of equationHistory) {
+    console.log(values);
     if (values.operator == "+") {
-      let result = Number(values.firstNumber) + Number(values.secondNumber);
-      let equation = `${values.firstNumber} + ${values.secondNumber} = ${result}`;
-      console.log(equation);
-      let calculatedObject = {
-        result: result,
-        equation: equation,
-      };
-      equationHistory = [];
-      postCalcHistory.unshift(calculatedObject);
+      addVals(values);
     } else if (values.operator == "-") {
-      let result = Number(values.firstNumber) - Number(values.secondNumber);
-      let equation = `${values.firstNumber} - ${values.secondNumber} = ${result}`;
-      console.log(equation);
-      let calculatedObject = {
-        result: result,
-        equation: equation,
-      };
-      equationHistory = [];
-      postCalcHistory.unshift(calculatedObject);
+      subtractVals(values);
     } else if (values.operator == "*") {
-      let result = Number(values.firstNumber) * Number(values.secondNumber);
-      let equation = `${values.firstNumber} * ${values.secondNumber} = ${result}`;
-      console.log(equation);
-      let calculatedObject = {
-        result: result,
-        equation: equation,
-      };
-      equationHistory = [];
-      postCalcHistory.unshift(calculatedObject);
+      multiplyVals(values);
     } else if (values.operator == "/") {
-      let result = Number(values.firstNumber) / Number(values.secondNumber);
-      let equation = `${values.firstNumber} / ${values.secondNumber} = ${result}`;
-      console.log(equation);
-      let calculatedObject = {
-        result: result,
-        equation: equation,
-      };
-      equationHistory = [];
-      postCalcHistory.unshift(calculatedObject);
+      divideVals(values);
     }
   }
 }
 
-// if array[0] = + sign, do addition
+// this function adds the first and second number entered into the input fields in client.js, packages the result of the calculation and string with the equation into the calculatedObject object, clears the equationHistory array, and then pushes the calculatedObject object into the postCalcHistory array.
+function addVals(values) {
+  let result = Number(values.firstNumber) + Number(values.secondNumber);
+  let equation = `${values.firstNumber} + ${values.secondNumber} = ${result}`;
+  let calculatedObject = {
+    result: result,
+    equation: equation,
+  };
+  equationHistory = [];
+  postCalcHistory.unshift(calculatedObject);
+}
+
+// this function subtracts the second number from the first number entered into the input fields in client.js, packages the result of the calculation and string with the equation into the calculatedObject object, clears the equationHistory array, and then pushes the calculatedObject object into the postCalcHistory array.
+function subtractVals(values) {
+  console.log("in subtractVals");
+  let result = Number(values.firstNumber) - Number(values.secondNumber);
+  let equation = `${values.firstNumber} - ${values.secondNumber} = ${result}`;
+  let calculatedObject = {
+    result: result,
+    equation: equation,
+  };
+  equationHistory = [];
+  postCalcHistory.unshift(calculatedObject);
+}
+
+// this function multiples the first and second numbers entered into the input fields in client.js, packages the result of the calculation and string with the equation into the calculatedObject object, clears the equationHistory array, and then pushes the calculatedObject object into the postCalcHistory array.
+function multiplyVals(values) {
+  let result = Number(values.firstNumber) * Number(values.secondNumber);
+  let equation = `${values.firstNumber} * ${values.secondNumber} = ${result}`;
+  let calculatedObject = {
+    result: result,
+    equation: equation,
+  };
+  equationHistory = [];
+  postCalcHistory.unshift(calculatedObject);
+}
+
+// this function divides the first number entered into the input fields in client.js by the second number, packages the result of the calculation and string with the equation into the calculatedObject object, clears the equationHistory array, and then pushes the calculatedObject object into the postCalcHistory array.
+function divideVals(values) {
+  let result = Number(values.firstNumber) / Number(values.secondNumber);
+  let equation = `${values.firstNumber} / ${values.secondNumber} = ${result}`;
+  let calculatedObject = {
+    result: result,
+    equation: equation,
+  };
+  equationHistory = [];
+  postCalcHistory.unshift(calculatedObject);
+}
 
 // this is the GET route that receives the GET request on the server and sends back the equationHistory array (THIS_NEEDS_TO_BE_CHANGED)
 app.get("/values", function (req, res) {
@@ -73,7 +90,8 @@ app.post("/values", (req, res) => {
   console.log("POST / values");
   console.log(req.body);
   equationHistory.push(req.body);
-  numberCruncher();
+  equationSelector();
+  //numberCruncher();
   res.sendStatus(200);
 });
 
