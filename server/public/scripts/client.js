@@ -2,19 +2,13 @@
 
 console.log("js");
 
+//--------STRETCH_CALCULATOR------------------------------------
+
 $(document).ready(onReady);
 
 //set up click events
 function onReady() {
   console.log("test");
-  //--------BASE_MODE_CALCULATOR------------------------------------
-  // $("#operatorContainer").on("click", "#addBtn", operatorSelector);
-  // $("#operatorContainer").on("click", "#subtractBtn", operatorSelector);
-  // $("#operatorContainer").on("click", "#multiplyBtn", operatorSelector);
-  // $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
-  // $("#equalsBtn").on("click", addNumbers);
-  // $("#clearBtn").on("click", clearFields);
-  //--------STRETCH_CALCULATOR------------------------------------
   $("#altInterfaceContainer").on("click", "#addBtn", stringNums);
   $("#altInterfaceContainer").on("click", "#subtractBtn", stringNums);
   $("#altInterfaceContainer").on("click", "#multiplyBtn", stringNums);
@@ -35,6 +29,7 @@ function onReady() {
 
 // this variable holds the equation the user inputs with the input pad in the form of a string e.g. "54*2".
 let stringNumber = "";
+// this variable holds the operator symbol that the user selects
 let sympol = "";
 
 // this function puts the value of the button a user clicks on in the variable number and then concatonates that number onto the stringNumber variable
@@ -49,7 +44,7 @@ function stringNums() {
   renderInput();
 }
 
-// this function takes a string of two numbers and an operator ("num1+num2") and break it into three separate parts and packages it as an object to send to the server.
+// this function takes a string of two numbers and an operator ("num1+num2") and break it into three separate parts and packages it as an object to send to the server. It sends the object to the server and calls the getCalcResponse() function when it recieves the server's response.
 function stringToObject() {
   let components = stringNumber.split(/[+,-,*,/]/);
   console.log(components);
@@ -73,15 +68,59 @@ function stringToObject() {
 function renderInput() {
   $("#display").val(`${stringNumber}`);
 }
+
+// this function makes a GET request to get results of the calculation from the server, when it receives the response, it calls the renderToDom() function to display the result of the calculation and the updated calculation history.
+function getCalcResponse() {
+  $.ajax({
+    method: "GET",
+    url: "/values",
+  }).then(function (response) {
+    console.log(response);
+    renderToDom(response);
+  });
+}
+
+// this function clears the previous result and equation history and appends the updated version of each to the DOM.
+function renderToDom(response) {
+  console.log(response);
+  $("#result").empty();
+  $("#historyContainer").empty();
+  $("#result").append(response[0].result);
+
+  for (let equationObject of response) {
+    $("#historyContainer").append(`
+    <li>${equationObject.equation}`);
+  }
+}
+
+// ------------BASE_MODE------------BASE_MODE--------------------------------
+
+// console.log("js");
+
+// $(document).ready(onReady);
+
+//set up click events
+// function onReady() {
+//   console.log("test");
+//--------BASE_MODE_CALCULATOR------------------------------------
+// $("#operatorContainer").on("click", "#addBtn", operatorSelector);
+// $("#operatorContainer").on("click", "#subtractBtn", operatorSelector);
+// $("#operatorContainer").on("click", "#multiplyBtn", operatorSelector);
+// $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
+// $("#equalsBtn").on("click", addNumbers);
+// $("#clearBtn").on("click", clearFields);
+//}
+
+// }
 // clears input fields for base mode
 // function clearFields() {
 //   $("#numberOneIn").val("");
 //   $("#numberTwoIn").val("");
 // }
 // initialize operator array that will contain the user selected operator
-let operator;
+// let operator;
 
-//push the user selected operator into the operator array
+//assign the user selected operator to the operator variable
 // function operatorSelector() {
 //   let operatorBtn = $(this).closest("button").text();
 //   operator = operatorBtn;
@@ -112,24 +151,24 @@ let operator;
 //   });
 // }
 
-function getCalcResponse() {
-  $.ajax({
-    method: "GET",
-    url: "/values",
-  }).then(function (response) {
-    console.log(response);
-    renderToDom(response);
-  });
-}
+// function getCalcResponse() {
+//   $.ajax({
+//     method: "GET",
+//     url: "/values",
+//   }).then(function (response) {
+//     console.log(response);
+//     renderToDom(response);
+//   });
+// }
 
-function renderToDom(response) {
-  console.log(response);
-  $("#result").empty();
-  $("#historyContainer").empty();
-  $("#result").append(response[0].result);
+// function renderToDom(response) {
+//   console.log(response);
+//   $("#result").empty();
+//   $("#historyContainer").empty();
+//   $("#result").append(response[0].result);
 
-  for (let equationObject of response) {
-    $("#historyContainer").append(`
-    <li>${equationObject.equation}`);
-  }
-}
+//   for (let equationObject of response) {
+//     $("#historyContainer").append(`
+//     <li>${equationObject.equation}`);
+//   }
+// }
