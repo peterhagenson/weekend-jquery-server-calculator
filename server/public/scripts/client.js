@@ -7,15 +7,17 @@ $(document).ready(onReady);
 //set up click events
 function onReady() {
   console.log("test");
-  $("#operatorContainer").on("click", "#addBtn", operatorSelector);
-  $("#operatorContainer").on("click", "#subtractBtn", operatorSelector);
-  $("#operatorContainer").on("click", "#multiplyBtn", operatorSelector);
-  $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
-  //$("#addBtn").on("click", operatorSelector);
-  $("#equalsBtn").on("click", addNumbers);
-  $("#clearBtn").on("click", clearFields);
-  //$("addBtn").on("click", addNums);
-  // getCalcResponse();
+  // $("#operatorContainer").on("click", "#addBtn", operatorSelector);
+  // $("#operatorContainer").on("click", "#subtractBtn", operatorSelector);
+  // $("#operatorContainer").on("click", "#multiplyBtn", operatorSelector);
+  // $("#operatorContainer").on("click", "#divideBtn", operatorSelector);
+  // $("#equalsBtn").on("click", addNumbers);
+  // $("#clearBtn").on("click", clearFields);
+  //--------STRETCH_CALCULATOR------------------------------------
+  $("#altInterfaceContainer").on("click", "#addBtn", operatorSelector);
+  $("#altInterfaceContainer").on("click", "#subtractBtn", operatorSelector);
+  $("#altInterfaceContainer").on("click", "#multiplyBtn", operatorSelector);
+  $("#altInterfaceContainer").on("click", "#divideBtn", operatorSelector);
 }
 
 function clearFields() {

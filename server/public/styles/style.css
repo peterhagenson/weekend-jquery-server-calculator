@@ -3,3 +3,7 @@
   max-width: 110px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+#display {
+  width: 110px;
+}
