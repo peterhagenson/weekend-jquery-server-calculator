@@ -1,10 +1,14 @@
+//
 const express = require("express");
 
+// calling the express function (app) that makes the express server
 const app = express();
 const PORT = 5000;
 
+// makes it so req.body is a thing; this is the body parser
 app.use(express.urlencoded({ extended: true }));
 
+// allowing us to share anything in the server>public folder as static assets (assets that don't change from user to user)
 app.use(express.static("server/public"));
 
 // the equationHistory array stores the equationElements objects that are sent to the server via the POST route
@@ -87,6 +91,7 @@ app.get("/values", function (req, res) {
 });
 
 // this is the POST route that receives a POST request wherein the client is requesting to post the objectToSend object to the server. The object is pushed to the equationHistory array, the equationSelector function is called, and the 200 status message is returned to the client
+// req and res are parameters that express gives: req is info coming in to server, res is being sent back
 app.post("/values", (req, res) => {
   console.log("POST / values");
   console.log(req.body);
@@ -96,6 +101,8 @@ app.post("/values", (req, res) => {
   res.sendStatus(200);
 });
 
+//
 app.listen(PORT, function () {
+  // app.use(PORT, () => {
   console.log("listening on port", PORT);
 });

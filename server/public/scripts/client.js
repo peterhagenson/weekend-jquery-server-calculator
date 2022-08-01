@@ -51,11 +51,11 @@ function stringNums() {
   renderInput();
 }
 
-// this function takes a string of two numbers and an operator (e.g. "num1+num2") and breaks it into three separate parts and packages it as an object to send to the server. It sends the object to the server and calls the getCalcResponse() function when it recieves the server's response.
+// this function takes a string of two numbers and an operator (e.g. "num1+num2") and breaks it into three separate parts and packages it as an object to send to the server. It sends the object to the server and calls the getCalcResponse() function when it receives the server's response.
 function stringToObject() {
   //___FIX_THIS_LINE_______SUBTRACTION_DOES_NOT_WORK_________
   // LOOP THROUGH THE STRING TO FIND THE SYMBOLS AND BREAK IT UP. THIS ALSO ENABLES MULTI-OPERATOR CALCULATIONS
-  let components = stringNumber.split(/[+,-,*,/]/);
+  let components = stringNumber.split(/[+,"-",*,/]/);
   let objectToSend = {
     firstNumber: components[0],
     secondNumber: components[1],
