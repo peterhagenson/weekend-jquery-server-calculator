@@ -51,16 +51,16 @@ function stringNums() {
   renderInput();
 }
 
-// this function takes a string of two numbers and an operator ("num1+num2") and break it into three separate parts and packages it as an object to send to the server. It sends the object to the server and calls the getCalcResponse() function when it recieves the server's response.
+// this function takes a string of two numbers and an operator (e.g. "num1+num2") and breaks it into three separate parts and packages it as an object to send to the server. It sends the object to the server and calls the getCalcResponse() function when it recieves the server's response.
 function stringToObject() {
+  //___FIX_THIS_LINE_______SUBTRACTION_DOES_NOT_WORK_________
+  // LOOP THROUGH THE STRING TO FIND THE SYMBOLS AND BREAK IT UP. THIS ALSO ENABLES MULTI-OPERATOR CALCULATIONS
   let components = stringNumber.split(/[+,-,*,/]/);
-  console.log(components);
   let objectToSend = {
     firstNumber: components[0],
     secondNumber: components[1],
     operator: symbol,
   };
-  console.log(objectToSend);
   $.ajax({
     method: "POST",
     url: "/values",
@@ -85,14 +85,12 @@ function getCalcResponse() {
     method: "GET",
     url: "/values",
   }).then(function (response) {
-    console.log(response);
     renderToDom(response);
   });
 }
 
 // this function clears the previous result and equation history and appends the updated version of each to the DOM.
 function renderToDom(response) {
-  console.log(response);
   $("#result").empty();
   $("#historyContainer").empty();
   $("#result").append(response[0].result);
