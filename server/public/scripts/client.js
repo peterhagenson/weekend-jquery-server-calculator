@@ -26,6 +26,7 @@ function onReady() {
   $("#altInterfaceContainer").on("click", "#dotBtn", stringNums);
   $("#altInterfaceContainer").on("click", "#equalsBtn", stringToObject);
   $("#displayContainer").on("click", "#clearBtn", clearDisplay);
+  getCalcResponse();
 }
 
 function clearDisplay() {
