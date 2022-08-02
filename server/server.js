@@ -1,9 +1,9 @@
-//
+// this is how we import express; we can also require other things.
 const express = require("express");
 
 // calling the express function (app) that makes the express server
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // makes it so req.body is a thing; this is the body parser
 app.use(express.urlencoded({ extended: true }));
