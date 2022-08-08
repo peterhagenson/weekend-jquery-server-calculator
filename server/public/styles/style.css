@@ -2,8 +2,27 @@
   margin-top: 20px;
   max-width: 110px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: solid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.resultContainer {
+  border: solid;
+  max-width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.calcContainer {
+  border: solid;
+  max-width: 180px;
 }
 
 #display {
   width: 110px;
+  margin-left: 16px;
 }

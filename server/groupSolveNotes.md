@@ -18,7 +18,7 @@
 
 - [] static file server
 
-  - [] I should be able to see index.html when I visit localhost:500
+  - [] I should be able to see index.html when I visit localhost:5000
     - [] require express
     - [] urlencoded setup (req.body)
     - [] static setup (server/public)

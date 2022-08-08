@@ -56,7 +56,7 @@ function stringNums() {
 function stringToObject() {
   //___FIX_THIS_LINE_______SUBTRACTION_DOES_NOT_WORK_________
   // LOOP THROUGH THE STRING TO FIND THE SYMBOLS AND BREAK IT UP. THIS ALSO ENABLES MULTI-OPERATOR CALCULATIONS
-  let components = stringNumber.split(/[+,"-",*,/]/);
+  let components = stringNumber.split(/[+*/-]/);
   let objectToSend = {
     firstNumber: components[0],
     secondNumber: components[1],
